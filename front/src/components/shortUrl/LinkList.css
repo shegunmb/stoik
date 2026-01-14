@@ -1,0 +1,94 @@
+.link_list_container {
+  width: 95%;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  overflow-y: auto;
+}
+
+.link_list_header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  font-weight: bold;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #1362dd;
+}
+
+.link_list_header > span:nth-child(1),
+.link_col.shortened {
+  grid-column: span 4;
+}
+
+.link_list_header > span:nth-child(2),
+.link_col.original {
+  grid-column: span 4;
+}
+
+.link_list_header > span:nth-child(3),
+.link_col.click_count {
+  grid-column: span 2;
+}
+
+.link_list_header > span:nth-child(4),
+.link_col.copy {
+  grid-column: span 2;
+}
+
+.link_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link_list_row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 0.5rem 1rem;
+  border-bottom: 0.5px solid #1362dd;
+  font-size: 0.9rem;
+}
+
+.link_list_empty {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #1362dd;
+}
+
+.link_col.shortened a {
+  color: #1362dd;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.link_col.shortened a:hover {
+  color: #0a40a0;
+}
+
+.copy_button {
+  padding: 0.5rem 1rem;
+  width: 100px;
+  background-color: #1362dd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.copy_button:hover {
+  background-color: #0a40a0;
+}
+
+.link_col.click_count {
+  grid-column: span 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #777;
+}

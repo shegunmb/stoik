@@ -19,7 +19,11 @@ export function LinkList() {
   if (isError) return <div>Erreur de chargement</div>;
 
   if (!urls?.length) {
-    return <div className="link_list_empty">Vous n'avez aucun lien créé</div>;
+    return (
+      <div className="link_list_container">
+        <div className="link_list_empty">Vous n'avez aucun lien créé</div>
+      </div>
+    );
   }
 
   return (

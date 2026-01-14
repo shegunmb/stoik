@@ -1,0 +1,63 @@
+.short_url_form {
+  width: 95%;
+  background-color: #1362dd;
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.catch_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.catch_phrase {
+  width: 60%;
+}
+
+.hero_img {
+  height: 400px;
+}
+
+.short_url_form h1 {
+  color: #fff;
+  font-size: 5em;
+  text-align: left;
+}
+
+.short_url_form p {
+  color: #fff;
+  text-align: left;
+}
+
+.short_url_form span {
+  color: rgb(60, 20, 65);
+}
+
+.form_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.form_wrapper input {
+  padding: 1rem;
+  width: 100%;
+  border-radius: 10px 0 0 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  color: #fff;
+}
+
+.form_wrapper input::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.form_wrapper button {
+  padding: 1rem;
+  width: 200px;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid white;
+  font-weight: bold;
+}

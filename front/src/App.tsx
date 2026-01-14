@@ -1,20 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import "./App.css";
+import { Layout } from "./components/layout/Layout";
+import { ShortUrlForm } from "./components/shortUrl/forms/ShortUrlForm";
+import { LinkList } from "./components/shortUrl/LinkList";
 
 function App() {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["hello"],
-    queryFn: async () => {
-      const res = await fetch("/api/hello");
-      if (!res.ok) throw new Error("Network error");
-      return res.json();
-    },
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error : {error.message}</div>;
-
-  return <div>{data.message}</div>;
+  return (
+    <Layout>
+      <ShortUrlForm />
+      <LinkList />
+    </Layout>
+  );
 }
 
 export default App;

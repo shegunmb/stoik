@@ -1,0 +1,32 @@
+#root {
+  min-height: 100vh;
+}
+.app_main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 24px 2rem;
+  width: 100%;
+  text-align: left;
+  height: 20px;
+  z-index: 1000;
+  background: #ddd;
+}
+
+.logo {
+  height: 18px;
+  width: 48px;
+  will-change: filter;
+  transition: filter 300ms;
+}

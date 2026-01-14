@@ -4,33 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev:watch": "nodemon --watch src --ext ts,tsx,js,jsx --exec \"node --loader ts-node/esm src/index.ts\"",
     "start": "node build/index.js",
     "build": "tsc",
-    "dev": "tsx watch src/index.ts"
+    "dev": "node --loader ts-node/esm src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.16.0",
     "cors": "^2.8.5",
-    "drizzle-kit": "^0.31.8",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
     "pg": "^8.16.3",
-    "sql.js": "^1.13.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.17",
+    "supertest": "^7.2.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
     "@types/node": "^20.19.28",
-    "@types/pg": "^8.16.0",
-    "@types/sql.js": "^1.4.9",
-    "nodemon": "^3.1.11",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "@types/supertest": "^6.0.3",
+    "nodemon": "^3.1.11"
   }
 }

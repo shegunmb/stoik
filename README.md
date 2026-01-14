@@ -58,6 +58,17 @@ Runs on `http://localhost:3001`
 
 ### Database
 
+You can access the PostgreSQL database using the following credentials
+
+```bash
+  // back/src/db/index.ts
+ database: "stoik_db"
+  user: "postgres"
+  password: "password"
+  host: "localhost"
+  port: 5432
+```
+
 Drizzle ORM is used for schema and migrations.
 
 ```bash

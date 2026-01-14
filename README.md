@@ -100,3 +100,8 @@ Anonymous users
 Short URLs are public
 
 Click count is a key metric
+
+<img width="1194" height="958" alt="Capture d’écran 2026-01-14 à 04 04 15" src="https://github.com/user-attachments/assets/cc93e7f8-3dae-41fa-8da3-58af924bb1f0" />
+
+
+

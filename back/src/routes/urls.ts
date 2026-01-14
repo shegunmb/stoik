@@ -1,38 +1,78 @@
 import { Router } from "express";
 import { db } from "../db/index.js";
 import { urls } from "../db/schema.js";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
+
+const ENV = "localhost";
+const PORT = 3001;
+
+export const generateShortCode = (): string => {
+  return Math.random().toString(36).substring(2, 8);
+};
 
 const router: Router = Router();
 
-router.post("/", async (req, res) => {
-  const { shortCode, originalUrl } = req.body;
+const generateUniqueShortCode = async (): Promise<string> => {
+  let shortCode = generateShortCode();
+  let attempts = 0;
+  const maxAttempts = 10;
 
-  if (!shortCode || !originalUrl) {
-    return res.status(400).json({ error: "Missing fields" });
+  while (attempts < maxAttempts) {
+    const existing = await db
+      .select()
+      .from(urls)
+      .where(eq(urls.shortCode, shortCode))
+      .execute();
+
+    if (existing.length === 0) {
+      return shortCode;
+    }
+
+    shortCode = generateShortCode();
+    attempts++;
+  }
+
+  throw new Error("Could not generate unique shortCode");
+};
+
+router.post("/", async (req, res) => {
+  const { originalUrl } = req.body;
+
+  if (!originalUrl) {
+    return res.status(400).json({ error: "Missing originalUrl" });
   }
 
   try {
+    const shortCode = await generateUniqueShortCode();
     await db.insert(urls).values({ shortCode, originalUrl });
-    res.status(201).json({ ok: true });
+
+    const shortenedUrl = `http://${ENV}:${PORT}/${shortCode}`;
+    res.status(201).json({ ok: true, shortCode, shortenedUrl, clickCount: 0 });
   } catch (err: any) {
-    if (err.message.includes("unique")) {
-      return res.status(409).json({ error: "Already exists" });
+    console.error("Error inserting URL:", err);
+    if (err.message === "Could not generate unique shortCode") {
+      return res
+        .status(500)
+        .json({ error: "Failed to generate unique shortCode" });
     }
     res.status(500).json({ error: "Database error" });
   }
 });
 
-router.get("/:shortCode", async (req, res) => {
-  const result = await db
-    .select()
-    .from(urls)
-    .where(eq(urls.shortCode, req.params.shortCode))
-    .execute();
+router.get("/", async (req, res) => {
+  try {
+    const results = await db
+      .select()
+      .from(urls)
+      .orderBy(desc(urls.createdAt))
+      .limit(50)
+      .execute();
 
-  if (!result) return res.status(404).json({ error: "Not found" });
-
-  res.json(result);
+    res.status(200).json(results);
+  } catch (err: any) {
+    console.error("Error fetching URLs:", err);
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 export default router;

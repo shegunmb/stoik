@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.vite/deps
+*.github*
+
+node_modules/*
+

@@ -58,11 +58,17 @@ Runs on `http://localhost:3001`
 
 ### Database
 
-You can access the PostgreSQL database using the following credentials
+PostgreSQL must be running locally.
+
+It can be provided either by:
+- a local PostgreSQL installation
+- or a PostgreSQL instance running via Docker Desktop
+
+You can access the PostgreSQL database using the following credentials:
 
 ```bash
   // back/src/db/index.ts
- database: "stoik_db"
+  database: "stoik_db"
   user: "postgres"
   password: "password"
   host: "localhost"
